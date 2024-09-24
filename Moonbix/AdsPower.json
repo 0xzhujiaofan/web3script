@@ -1,0 +1,274 @@
+[
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 5000,
+      "timeoutMin": 2000,
+      "timeoutMax": 5000,
+      "remark": "",
+      "_copyItemIndex": "0_2",
+      "_copyItemType": ""
+    }
+  },
+  {
+    "type": "gotoUrl",
+    "config": {
+      "url": "https://web.telegram.org/a/#7279327591",
+      "timeout": 30000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitForSelector",
+    "config": {
+      "selectorRadio": "CSS",
+      "selector": ".bot-menu-text",
+      "serial": 1,
+      "isShow": "1",
+      "timeout": 30000,
+      "variable": "",
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 10000,
+      "timeoutMin": 10000,
+      "timeoutMax": 15000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "click",
+    "config": {
+      "selectorRadio": "CSS",
+      "selector": ".bot-menu-text",
+      "selectorType": "selector",
+      "element": "",
+      "serialType": "fixedValue",
+      "serial": 1,
+      "serialMin": 1,
+      "serialMax": 50,
+      "button": "left",
+      "type": "click",
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 10000,
+      "timeoutMin": 10000,
+      "timeoutMax": 15000,
+      "remark": "",
+      "_copyItemIndex": "0_2",
+      "_copyItemType": ""
+    }
+  },
+  {
+    "type": "javaScript",
+    "config": {
+      "params": [],
+      "content": "const iframe = document.querySelector('iframe');\n    if (iframe && iframe.src) {\n        return iframe.src ; // 返回 iframe 的地址\n    } else {\n        alert('未找到 iframe 或其地址为空');\n }",
+      "variable": "Game_Url",
+      "remark": ""
+    }
+  },
+  {
+    "type": "gotoUrl",
+    "config": {
+      "url": "${Game_Url}",
+      "timeout": 30000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 10000,
+      "timeoutMin": 10000,
+      "timeoutMax": 15000,
+      "remark": "",
+      "_copyItemIndex": "0_4",
+      "_copyItemType": ""
+    }
+  },
+  {
+    "type": "javaScript",
+    "config": {
+      "params": [],
+      "content": "const gameChancesDiv = document.querySelector('div[style=\"font-weight: 500;\"]');\nconst Game_Chance= gameChancesDiv ? gameChancesDiv.textContent.split('/')[0] : null;\nreturn Game_Chance;",
+      "variable": "Game_Chance",
+      "remark": "",
+      "_copyItemIndex": "0_5",
+      "_copyItemType": ""
+    }
+  },
+  {
+    "type": "forTimes",
+    "config": {
+      "times": "Game_Chance",
+      "variableIndex": "",
+      "remark": "",
+      "hiddenChildren": false,
+      "children": [
+        {
+          "type": "waitTime",
+          "config": {
+            "timeoutType": "randomInterval",
+            "timeout": 10000,
+            "timeoutMin": 2500,
+            "timeoutMax": 5000,
+            "remark": "",
+            "_copyItemIndex": "0_10_4",
+            "_copyItemType": "children_children"
+          }
+        },
+        {
+          "type": "javaScript",
+          "config": {
+            "params": [],
+            "content": "var buttonDiv = document.querySelector('div[class^=\"Game_entry__playBtn__\"]');\nif (buttonDiv) {\n    return buttonDiv.textContent;\n} else {\n    //alert(\"没有找到按钮\");\n}",
+            "variable": "Start_Game",
+            "remark": ""
+          }
+        },
+        {
+          "type": "click",
+          "config": {
+            "selectorRadio": "TEXT",
+            "selector": "${Start_Game}",
+            "selectorType": "selector",
+            "element": "",
+            "serialType": "fixedValue",
+            "serial": 1,
+            "serialMin": 1,
+            "serialMax": 50,
+            "button": "left",
+            "type": "click",
+            "remark": "",
+            "_copyItemIndex": "0_3",
+            "_copyItemType": ""
+          }
+        },
+        {
+          "type": "waitForSelector",
+          "config": {
+            "selectorRadio": "CSS",
+            "selector": ".canvas-wrapper",
+            "serial": 1,
+            "isShow": "1",
+            "timeout": 3000,
+            "variable": "Canvas_Wrapper",
+            "remark": "",
+            "_copyItemIndex": "0_10_2_0",
+            "_copyItemType": "children_children_children"
+          }
+        },
+        {
+          "type": "whileData",
+          "config": {
+            "condition": [
+              "Canvas_Wrapper"
+            ],
+            "relation": "exist",
+            "result": "",
+            "hiddenChildren": false,
+            "children": [
+              {
+                "type": "waitForSelector",
+                "config": {
+                  "selectorRadio": "CSS",
+                  "selector": ".canvas-wrapper",
+                  "serial": 1,
+                  "isShow": "1",
+                  "timeout": 100,
+                  "variable": "Canvas_Wrapper",
+                  "remark": ""
+                }
+              },
+              {
+                "type": "click",
+                "config": {
+                  "selectorRadio": "CSS",
+                  "selector": ".canvas-wrapper",
+                  "selectorType": "selector",
+                  "element": "",
+                  "serialType": "fixedValue",
+                  "serial": 1,
+                  "serialMin": 1,
+                  "serialMax": 50,
+                  "button": "left",
+                  "type": "click",
+                  "remark": "",
+                  "_copyItemIndex": "0_9_0",
+                  "_copyItemType": "children_children"
+                }
+              },
+              {
+                "type": "waitTime",
+                "config": {
+                  "timeoutType": "fixedValue",
+                  "timeout": 10,
+                  "timeoutMin": 10,
+                  "timeoutMax": 50,
+                  "remark": "",
+                  "_copyItemIndex": "0_9_1",
+                  "_copyItemType": "children_children"
+                }
+              }
+            ],
+            "remark": ""
+          }
+        },
+        {
+          "type": "waitTime",
+          "config": {
+            "timeoutType": "randomInterval",
+            "timeout": 10000,
+            "timeoutMin": 2500,
+            "timeoutMax": 5000,
+            "remark": "",
+            "_copyItemIndex": "0_8",
+            "_copyItemType": ""
+          }
+        },
+        {
+          "type": "click",
+          "config": {
+            "selectorRadio": "CSS",
+            "selector": ".absolute",
+            "selectorType": "selector",
+            "element": "",
+            "serialType": "fixedValue",
+            "serial": 1,
+            "serialMin": 1,
+            "serialMax": 50,
+            "button": "left",
+            "type": "click",
+            "remark": "",
+            "_copyItemIndex": "0_9_2_0",
+            "_copyItemType": "children_children_children"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 5000,
+      "timeoutMin": 5000,
+      "timeoutMax": 8000,
+      "remark": "",
+      "_copyItemIndex": "0_7",
+      "_copyItemType": ""
+    }
+  }
+]
