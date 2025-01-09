@@ -1,0 +1,97 @@
+[
+  {
+    "type": "gotoUrl",
+    "config": {
+      "url": "https://ofc.onefootball.com/s2/",
+      "timeout": 100000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 5000,
+      "timeoutMin": 5000,
+      "timeoutMax": 6000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "refreshPage",
+    "config": {
+      "timeout": 10000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 10000,
+      "timeoutMin": 8000,
+      "timeoutMax": 10000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "scrollPage",
+    "config": {
+      "rangeType": "window",
+      "selectorRadio": "CSS",
+      "selector": "",
+      "serial": 1,
+      "distance": 0,
+      "type": "moment",
+      "scrollType": "position",
+      "position": "bottom",
+      "remark": "",
+      "randomWheelDistance": [
+        100,
+        150
+      ],
+      "randomWheelSleepTime": [
+        200,
+        300
+      ]
+    }
+  },
+  {
+    "type": "javaScript",
+    "config": {
+      "params": [],
+      "content": "const xpath = \"//text()[normalize-space() = \\\"Let's go\\\"]/parent::*\";\nconst result = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);\nif (result.singleNodeValue) {\n    result.singleNodeValue.click();\n} else {\n    console.log(\"未找到Let's go按钮\");\n}",
+      "variable": "",
+      "remark": "查找并点击签到按钮"
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 2000,
+      "timeoutMin": 2000,
+      "timeoutMax": 3000,
+      "remark": ""
+    }
+  },
+  {
+    "type": "javaScript",
+    "config": {
+      "params": [],
+      "content": "const xpath = \"//text()[normalize-space() = \\\"Verify\\\"]/parent::*\";\nconst result = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);\nif (result.singleNodeValue) {\n    result.singleNodeValue.click();\n} else {\n    console.log(\"未找到Verify按钮\");\n}",
+      "variable": "",
+      "remark": "查找并点击确认签到按钮"
+    }
+  },
+  {
+    "type": "waitTime",
+    "config": {
+      "timeoutType": "randomInterval",
+      "timeout": 3000,
+      "timeoutMin": 2000,
+      "timeoutMax": 3000,
+      "remark": ""
+    }
+  }
+]
